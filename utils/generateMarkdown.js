@@ -1,19 +1,76 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
-function renderLicenseBadge(license) {}
+function renderLicenseBadge(license) {
+  if (license !== "Unlicensed") 
+  {
+    return `![Badge](https://img.shields.io/badge/License-${license}-blue.svg)`
+  }
+  return ``;
+}
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) {}
+function renderLicenseLink(license) {
+  if (license !== "Unlicensed")
+  {
+    return `-[License](#license)`
+  }
+  return ``;
+}
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license) {}
+function renderLicenseSection(license) {
+  if (license !== "Unlicensed")
+  {
+    return `## License
+    ${license} Copyright(c) ${new Date().getFullYear()} ${answers.username}`
+  }
+}
 
 // TODO: Create a function to generate markdown for README
-function generateMarkdown(data) {
-  return `# ${data.title}
+function generateMarkdown(answers) {
+  return `# ${answers.title}
+  ${renderLicenseBadge(answers.license)}
 
+  ## Description
+
+  ${answers.description}
+
+  ## Table of Contents
+
+  -[Installation](#installation)
+  -[Usage](#usage)
+  -[Contribution](#contribution)
+  -[Test](#test)
+  ${renderLicenseLink(answers.license)}
+  -[Questions](#questions)
+
+  ## Installation
+
+  ${answers.installation}
+
+  ## Usage
+
+  ${answers.usage}
+
+  ## Contribution
+
+  ${answers.contribution}
+
+  ## Test
+
+  ${answers.test}
+
+  ## License
+
+  ${renderLicenseSection(answers.license)}
+
+  ## Questions
+
+  If you have questions, please reach out to me on GitHub or via email!
+  GitHub: @${answers.username}
+  Email: ${answers.email}
 `;
 }
 
