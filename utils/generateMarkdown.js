@@ -1,76 +1,56 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
-function renderLicenseBadge(license) {
-  if (license !== "Unlicensed") 
+function renderLicenseContent(answers){
+  if (answers.licensed !== "Unlicensed")
   {
-    return `![Badge](https://img.shields.io/badge/License-${license}-blue.svg)`
+    return `${answers.license} Copyright(c) ${new Date().getFullYear()} ${answers.username}`
   }
-  return ``;
-}
-
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-function renderLicenseLink(license) {
-  if (license !== "Unlicensed")
+  else
   {
-    return `-[License](#license)`
-  }
-  return ``;
-}
-
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {
-  if (license !== "Unlicensed")
-  {
-    return `## License
-    ${license} Copyright(c) ${new Date().getFullYear()} ${answers.username}`
+    return `N/A`
   }
 }
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(answers) {
   return `# ${answers.title}
-  ${renderLicenseBadge(answers.license)}
+![Badge](https://img.shields.io/badge/license-${answers.license}-blue)((https://shields.io))
 
-  ## Description
+## Description
 
-  ${answers.description}
+${answers.description}
 
-  ## Table of Contents
+## Table of Contents
+-[Installation](#installation)
+-[Usage](#usage)
+-[Contribution](#contribution)
+-[Test](#test)
+-[License](#license)
+-[Questions](#questions)
 
-  -[Installation](#installation)
-  -[Usage](#usage)
-  -[Contribution](#contribution)
-  -[Test](#test)
-  ${renderLicenseLink(answers.license)}
-  -[Questions](#questions)
+## Installation
 
-  ## Installation
+${answers.installation}
 
-  ${answers.installation}
+## Usage
 
-  ## Usage
+${answers.usage}
 
-  ${answers.usage}
+## Contribution
 
-  ## Contribution
+${answers.contribution}
 
-  ${answers.contribution}
+## Test
 
-  ## Test
+${answers.test}
 
-  ${answers.test}
+## License
 
-  ## License
+${renderLicenseContent(answers.license)}
 
-  ${renderLicenseSection(answers.license)}
+## Questions
 
-  ## Questions
-
-  If you have questions, please reach out to me on GitHub or via email!
-  GitHub: @${answers.username}
-  Email: ${answers.email}
+If you have questions, please reach out to me on GitHub or via email!
+GitHub: @${answers.username}
+Email: ${answers.email}
 `;
 }
 

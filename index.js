@@ -4,9 +4,7 @@ const fs = require("fs");
 const generateMarkdown = require("./utils/generateMarkdown")
 
 // TODO: Create an array of questions for user input
-//const questions = [];
-inquirer
-  .prompt([
+const questions = [
     {
       type: "input",
       message: "What is the title of your project?",
@@ -40,7 +38,7 @@ inquirer
     {
       type: "list",
       message: "Please choose a license:",
-      choices: ["Apache License 2.0", "MIT License", "GPLv2", "GPLv3", "BSD 3-clause", "BSD 2-clause", "LGPLv3", "AGPLv3", "Unlicensed"],
+      choices: ["Apache", "MIT", "GPLv2", "GPLv3", "BSD3", "BSD2", "LGPLv3", "AGPLv3", "Unlicensed"],
       name: "license",
     },
     {
@@ -53,18 +51,24 @@ inquirer
       message: "Enter email address:",
       name: "email",
     }
-  ])
+  ];
 
 // TODO: Create a function to write README file
-    .then((answers) => {
-    const filename = `${answers.title.toLowerCase().split(' ').join('')}.md`;
-    fs.writeFile(filename, generateMarkdown(answers), (err) =>
+function writeReadme(filename, answers){
+    fs.writeFile(filename, answers, (err) =>
         err? console.log(err): console.log("README.md successfully generated!")
     );
-});
+}
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    inquirer.prompt(questions)
+    .then((answers) => {
+        console.log(answers);
+        const filename = `${answers.title.toLowerCase().split(' ').join('')}.md`;
+        writeReadme(filename, generateMarkdown(answers));
+    });
+};
 
 // Function call to initialize app
 init();
