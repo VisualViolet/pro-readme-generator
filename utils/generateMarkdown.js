@@ -1,7 +1,7 @@
-function renderLicenseContent(answers){
-  if (answers.licensed !== "Unlicensed")
+function renderLicenseContent(license, username){
+  if (license !== "Unlicensed")
   {
-    return `${answers.license} Copyright(c) ${new Date().getFullYear()} ${answers.username}`
+    return `${license} Copyright(c) ${new Date().getFullYear()} ${username}`
   }
   else
   {
@@ -12,7 +12,7 @@ function renderLicenseContent(answers){
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(answers) {
   return `# ${answers.title}
-![Badge](https://img.shields.io/badge/license-${answers.license}-blue)((https://shields.io))
+![Badge](https://img.shields.io/badge/license-${answers.license}-blue)
 
 ## Description
 
@@ -20,10 +20,15 @@ ${answers.description}
 
 ## Table of Contents
 -[Installation](#installation)
+
 -[Usage](#usage)
+
 -[Contribution](#contribution)
+
 -[Test](#test)
+
 -[License](#license)
+
 -[Questions](#questions)
 
 ## Installation
@@ -44,12 +49,14 @@ ${answers.test}
 
 ## License
 
-${renderLicenseContent(answers.license)}
+${renderLicenseContent(answers.license, answers.username)}
 
 ## Questions
 
 If you have questions, please reach out to me on GitHub or via email!
-GitHub: @${answers.username}
+
+GitHub: https://github.com/${answers.username}
+
 Email: ${answers.email}
 `;
 }
