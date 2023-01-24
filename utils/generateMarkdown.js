@@ -1,3 +1,4 @@
+// Function to render license content based on selection
 function renderLicenseContent(license, username){
   if (license !== "Unlicensed")
   {
@@ -9,7 +10,7 @@ function renderLicenseContent(license, username){
   }
 }
 
-// TODO: Create a function to generate markdown for README
+// Function to generate markdown for readme
 function generateMarkdown(answers) {
   return `# ${answers.title}
 ![Badge](https://img.shields.io/badge/license-${answers.license}-blue)
@@ -61,4 +62,5 @@ Email: ${answers.email}
 `;
 }
 
+// Export for use
 module.exports = generateMarkdown;
