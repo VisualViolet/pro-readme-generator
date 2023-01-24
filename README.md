@@ -6,7 +6,7 @@ This application uses node.js and Inquirer to obtain user input and write a prof
 
 ## Installation
 
-No installation is necessary. As this will not be a deployed application, a live demonstration of this applications functionality can be viewed here:
+No installation is necessary. As this will not be a deployed application, a live demonstration of this applications functionality can be viewed here: https://drive.google.com/file/d/1nFENRhfDJQjQX1cxUu-riNe29-D5_yi1/view.
 
 ## Usage
 
